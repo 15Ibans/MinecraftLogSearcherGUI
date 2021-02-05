@@ -20,12 +20,8 @@ namespace MinecraftLogSearcherGUI
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
+            searchTerm.Text = "Search text goes here...";
+            logDirectory.Text = "Logs directory goes here...";
         }
 
         private void fileDialog_Click(object sender, EventArgs e)
@@ -47,6 +43,22 @@ namespace MinecraftLogSearcherGUI
             if (!Directory.Exists(logDirectory.Text))
             {
                 MessageBox.Show("Enter a valid directory in the directory text box", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void logDirectoryClick(object sender, EventArgs e)
+        {
+            if (logDirectory.Text == "Log directory goes here...");
+            {
+                logDirectory.Text = "";
+            }
+        }
+
+        private void searchTerm_Click(object sender, EventArgs e)
+        {
+            if (searchTerm.Text == "Search text goes here...")
+            {
+                searchTerm.Text = "";
             }
         }
     }

@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace MinecraftLogSearcherGUI
         {
             InitializeComponent();
 
-            this.Text = "Search Results";
+            Text = "Search Results";
 
             results.View = View.Details;
             results.Columns.Add("File", -2);
@@ -24,6 +25,8 @@ namespace MinecraftLogSearcherGUI
 
             this.directory = new DirectoryInfo(directory);
             this.searchTerm = searchTerm;
+
+            results.MouseClick += SearchTerm_Click;
 
             Show();
 
@@ -49,12 +52,27 @@ namespace MinecraftLogSearcherGUI
                                 if (line.ToLower().Contains(searchTerm.ToLower()))
                                 {
                                     string[] result = { lineNumber.ToString(), line };          // wtf
-                                    results.Items.Add(file.Name).SubItems.AddRange(result);   
+                                    results.Items.Add(file.Name).SubItems.AddRange(result);
+                                    
                                 }
                                 lineNumber++;
                             }
                         }
                     }
+                }
+            }
+        }
+
+        private void SearchTerm_Click(object sender, MouseEventArgs e)
+        {
+            for (int i = 0; i < results.Items.Count; i++)
+            {
+                var rectangle = results.GetItemRect(i);
+                if (rectangle.Contains(e.Location))
+                {
+                    string fileName = results.Items[i].Text;
+                    _ = new Log(directory.EnumerateFiles().First(file => file.Name == fileName)); 
+                    return;
                 }
             }
         }

@@ -1,4 +1,6 @@
-﻿namespace MinecraftLogSearcherGUI
+﻿using System;
+
+namespace MinecraftLogSearcherGUI
 {
     partial class MainForm
     {
@@ -23,8 +25,8 @@
         #region Windows Form Designer generated code
 
         /// <summary>
-        ///  Required method for Designer support - do not modify
-        ///  the contents of this method with the code editor.
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
@@ -37,24 +39,25 @@
             // 
             // logDirectory
             // 
-            this.logDirectory.Location = new System.Drawing.Point(82, 75);
+            this.logDirectory.Location = new System.Drawing.Point(70, 65);
             this.logDirectory.Name = "logDirectory";
-            this.logDirectory.Size = new System.Drawing.Size(302, 23);
+            this.logDirectory.Size = new System.Drawing.Size(259, 20);
             this.logDirectory.TabIndex = 0;
-            this.logDirectory.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.logDirectory.Click += new System.EventHandler(this.logDirectoryClick);
             // 
             // searchTerm
             // 
-            this.searchTerm.Location = new System.Drawing.Point(82, 104);
+            this.searchTerm.Location = new System.Drawing.Point(70, 90);
             this.searchTerm.Name = "searchTerm";
-            this.searchTerm.Size = new System.Drawing.Size(302, 23);
+            this.searchTerm.Size = new System.Drawing.Size(259, 20);
             this.searchTerm.TabIndex = 1;
+            this.searchTerm.Click += new System.EventHandler(this.searchTerm_Click);
             // 
             // fileDialog
             // 
-            this.fileDialog.Location = new System.Drawing.Point(390, 74);
+            this.fileDialog.Location = new System.Drawing.Point(334, 64);
             this.fileDialog.Name = "fileDialog";
-            this.fileDialog.Size = new System.Drawing.Size(26, 23);
+            this.fileDialog.Size = new System.Drawing.Size(22, 20);
             this.fileDialog.TabIndex = 2;
             this.fileDialog.Text = "...";
             this.fileDialog.UseVisualStyleBackColor = true;
@@ -62,9 +65,9 @@
             // 
             // searchButton
             // 
-            this.searchButton.Location = new System.Drawing.Point(218, 176);
+            this.searchButton.Location = new System.Drawing.Point(187, 153);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(75, 23);
+            this.searchButton.Size = new System.Drawing.Size(64, 20);
             this.searchButton.TabIndex = 3;
             this.searchButton.Text = "Search";
             this.searchButton.UseVisualStyleBackColor = true;
@@ -72,9 +75,9 @@
             // 
             // MainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(507, 262);
+            this.ClientSize = new System.Drawing.Size(435, 227);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.fileDialog);
             this.Controls.Add(this.searchTerm);
@@ -84,7 +87,6 @@
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
-
         }
 
         #endregion

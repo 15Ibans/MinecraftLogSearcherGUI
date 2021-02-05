@@ -1,4 +1,6 @@
-﻿namespace MinecraftLogSearcherGUI
+﻿using System;
+
+namespace MinecraftLogSearcherGUI
 {
     partial class Form2
     {
