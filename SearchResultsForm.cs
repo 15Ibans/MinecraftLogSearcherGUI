@@ -75,7 +75,8 @@ namespace MinecraftLogSearcherGUI
                 if (rectangle.Contains(e.Location))
                 {
                     string fileName = results.Items[i].Text;
-                    _ = new Log(fileName, cache.GetLines(fileName)); 
+                    int lineNum = Int32.Parse(results.Items[i].SubItems[1].Text);
+                    _ = new Log(fileName, cache.GetLines(fileName), lineNum); 
                     return;
                 }
             }

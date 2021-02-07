@@ -7,27 +7,22 @@ namespace MinecraftLogSearcherGUI
 {
     public partial class Log : Form
     {
-        List<Label> lineLabels = new List<Label>();
-        
-        public Log(string fileName, List<string> lines)
+        public Log(string fileName, List<string> lines, int lineNum)
         {
             Text = fileName;
             InitializeComponent();
-            logText.ScrollBars = ScrollBars.Vertical;
+            logText.ScrollBars = ScrollBars.Both;
             logText.Font = new Font("Courier New", logText.Font.Size);
             logText.ReadOnly = true;
+            logText.WordWrap = false;
 
-            foreach (string line in lines)
-            {
-                logText.AppendText(line);
-                logText.AppendText(Environment.NewLine);
-            }
+            logText.Lines = lines.ToArray();
+            
             Show();
-        }
 
-        private void UpdateLineLabel()
-        {
-            lineNumLabel.Text = logText.GetLineFromCharIndex(logText.Text.IndexOf(logText.SelectedText)).ToString();
+            logText.SelectionStart = logText.GetFirstCharIndexFromLine(lineNum - 1);
+            logText.SelectionLength = logText.Lines[lineNum - 1].Length;
+            logText.ScrollToCaret();
         }
     }
 }
