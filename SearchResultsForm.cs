@@ -11,6 +11,7 @@ namespace MinecraftLogSearcherGUI
     {
         private string searchTerm;
         private DirectoryInfo directory;
+        private LogCache cache = new LogCache();
 
         public Form2(string directory, string searchTerm)
         {
@@ -26,7 +27,7 @@ namespace MinecraftLogSearcherGUI
             this.directory = new DirectoryInfo(directory);
             this.searchTerm = searchTerm;
 
-            results.MouseClick += SearchTerm_Click;
+            results.MouseDoubleClick += SearchTerm_Click;
 
             Show();
 
@@ -53,14 +54,17 @@ namespace MinecraftLogSearcherGUI
                                 {
                                     string[] result = { lineNumber.ToString(), line };          // wtf
                                     results.Items.Add(file.Name).SubItems.AddRange(result);
-                                    
                                 }
+                                cache.AddLine(file.Name, line);
                                 lineNumber++;
                             }
                         }
                     }
                 }
             }
+
+            results.Columns[0].Width = -2;
+            results.Columns[1].Width = -2;
         }
 
         private void SearchTerm_Click(object sender, MouseEventArgs e)
@@ -71,7 +75,7 @@ namespace MinecraftLogSearcherGUI
                 if (rectangle.Contains(e.Location))
                 {
                     string fileName = results.Items[i].Text;
-                    _ = new Log(directory.EnumerateFiles().First(file => file.Name == fileName)); 
+                    _ = new Log(fileName, cache.GetLines(fileName)); 
                     return;
                 }
             }
