@@ -13,9 +13,15 @@ namespace MinecraftLogSearcherGUI
 {
     public partial class MainForm : Form
     {
+
+        private readonly string defaultLogDirectoryText = "Log directory goes here...";
+        private readonly string defaultSearchTermText = "Search text goes here...";
+        
         public MainForm()
         {
             InitializeComponent();
+            logDirectory.Click += logDirectoryClick;
+            searchTerm.Click += searchTerm_Click;
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -48,7 +54,7 @@ namespace MinecraftLogSearcherGUI
 
         private void logDirectoryClick(object sender, EventArgs e)
         {
-            if (logDirectory.Text == "Log directory goes here...");
+            if (logDirectory.Text == defaultLogDirectoryText)
             {
                 logDirectory.Text = "";
             }
@@ -56,7 +62,7 @@ namespace MinecraftLogSearcherGUI
 
         private void searchTerm_Click(object sender, EventArgs e)
         {
-            if (searchTerm.Text == "Search text goes here...")
+            if (searchTerm.Text == defaultSearchTermText)
             {
                 searchTerm.Text = "";
             }

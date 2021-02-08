@@ -43,7 +43,6 @@ namespace MinecraftLogSearcherGUI
             this.logDirectory.Name = "logDirectory";
             this.logDirectory.Size = new System.Drawing.Size(259, 20);
             this.logDirectory.TabIndex = 0;
-            this.logDirectory.Click += new System.EventHandler(this.logDirectoryClick);
             // 
             // searchTerm
             // 
@@ -51,7 +50,6 @@ namespace MinecraftLogSearcherGUI
             this.searchTerm.Name = "searchTerm";
             this.searchTerm.Size = new System.Drawing.Size(259, 20);
             this.searchTerm.TabIndex = 1;
-            this.searchTerm.Click += new System.EventHandler(this.searchTerm_Click);
             // 
             // fileDialog
             // 
