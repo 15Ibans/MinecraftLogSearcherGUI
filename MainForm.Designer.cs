@@ -81,7 +81,7 @@ namespace MinecraftLogSearcherGUI
             this.Controls.Add(this.searchTerm);
             this.Controls.Add(this.logDirectory);
             this.Name = "MainForm";
-            this.Text = "Form1";
+            this.Text = "Minecraft Log Searcher";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

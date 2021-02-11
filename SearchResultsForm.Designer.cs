@@ -49,7 +49,7 @@ namespace MinecraftLogSearcherGUI
             this.ClientSize = new System.Drawing.Size(1241, 450);
             this.Controls.Add(this.results);
             this.Name = "Form2";
-            this.Text = "Form2";
+            this.Text = "Search Results";
             this.ResumeLayout(false);
 
         }
