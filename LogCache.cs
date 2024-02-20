@@ -19,11 +19,7 @@ namespace MinecraftLogSearcherGUI
 
         public List<string> GetLines(string file)
         {
-            if (_cache.ContainsKey(file))
-            {
-                return _cache[file];
-            }
-            return null;
+            return _cache.ContainsKey(file) ? _cache[file] : null;
         }
     }
 }
