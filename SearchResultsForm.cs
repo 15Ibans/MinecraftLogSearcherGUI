@@ -1,4 +1,4 @@
-﻿using System;
+﻿using  System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -9,9 +9,11 @@ namespace MinecraftLogSearcherGUI
 {
     public partial class Form2 : Form
     {
-        private string searchTerm;
-        private DirectoryInfo directory;
+        private readonly string _searchTerm;
+        private DirectoryInfo _directory;
         private LogCache cache = new LogCache();
+
+        private bool isCaseSensitive = false;
 
         public Form2(string directory, string searchTerm)
         {
@@ -24,8 +26,8 @@ namespace MinecraftLogSearcherGUI
             results.Columns.Add("Line", -2);
             results.Columns.Add("Result", -2);
 
-            this.directory = new DirectoryInfo(directory);
-            this.searchTerm = searchTerm;
+            _directory = new DirectoryInfo(directory);
+            _searchTerm = searchTerm;
 
             results.MouseDoubleClick += SearchTerm_Click;
 
@@ -36,7 +38,7 @@ namespace MinecraftLogSearcherGUI
 
         private void GetResults()
         {
-            var files = directory.EnumerateFiles().Where(file => file.Name.ToLower().EndsWith(".log.gz")).ToList();
+            var files = _directory.EnumerateFiles().Where(file => file.Name.ToLower().EndsWith(".log.gz")).ToList();
 
             foreach (FileInfo file in files)
             {
@@ -50,7 +52,10 @@ namespace MinecraftLogSearcherGUI
                             while (!reader.EndOfStream)
                             {
                                 string line = reader.ReadLine();
-                                if (line.ToLower().Contains(searchTerm.ToLower()))
+                                bool isSubstring = isCaseSensitive
+                                    ? line?.Contains(_searchTerm) ?? false
+                                    : line?.Contains(_searchTerm, StringComparison.OrdinalIgnoreCase) ?? false;
+                                if (isSubstring)
                                 {
                                     string[] result = { lineNumber.ToString(), line };          // wtf
                                     results.Items.Add(file.Name).SubItems.AddRange(result);
