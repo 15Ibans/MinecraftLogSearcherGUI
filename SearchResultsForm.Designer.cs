@@ -2,7 +2,7 @@
 
 namespace MinecraftLogSearcherGUI
 {
-    partial class Form2
+    partial class SearchResultsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -48,7 +48,7 @@ namespace MinecraftLogSearcherGUI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1241, 450);
             this.Controls.Add(this.results);
-            this.Name = "Form2";
+            this.Name = "SearchResultsForm";
             this.Text = "Search Results";
             this.ResumeLayout(false);
 

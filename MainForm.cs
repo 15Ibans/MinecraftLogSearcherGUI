@@ -44,7 +44,7 @@ namespace MinecraftLogSearcherGUI
         {
             if (Directory.Exists(logDirectory.Text) && searchTerm.Text.Length > 0)
             {
-                _ = new Form2(logDirectory.Text, searchTerm.Text);
+                _ = new SearchResultsForm(logDirectory.Text, searchTerm.Text);
             }
             if (!Directory.Exists(logDirectory.Text))
             {

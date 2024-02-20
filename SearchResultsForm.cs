@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace MinecraftLogSearcherGUI
 {
-    public partial class Form2 : Form
+    public partial class SearchResultsForm : Form
     {
         private readonly string _searchTerm;
         private DirectoryInfo _directory;
@@ -15,7 +15,7 @@ namespace MinecraftLogSearcherGUI
 
         private bool isCaseSensitive = false;
 
-        public Form2(string directory, string searchTerm)
+        public SearchResultsForm(string directory, string searchTerm)
         {
             InitializeComponent();
 
